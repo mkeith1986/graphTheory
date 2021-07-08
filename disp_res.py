@@ -641,19 +641,8 @@ def main():
         elif arg.startswith("--location="):
             location = arg.replace("--location=",'')
             
-    if (sbj_id=='') or (sess_id=='') or (pipeline==''):
+    if sbj_id=='' or sess_id=='' or pipeline=='' or sbj_path=='' or location=='' or log_path=='':
         sys.exit("Missing arguments")
-    if sbj_path=='':
-        sbj_path = "/group/agreenb/iPadStudy/keith/data/"+sbj_id+'/'+sess_id+'/'+pipeline
-    if location=='':
-        location = "petrov"
-    if pipeline=="rs" and location=="petrov":
-        sbj_path+="/preproc/ts_mot"
-    if log_path=='':
-        if pipeline=="rs":
-            log_path = sbj_path+"/graphs."+sbj_id
-        else:
-            log_path = sbj_path+"/graphs."+sbj_id
     fout = open(log_path,'w')
     printout("Processing "+sbj_id+'_'+sess_id+' '+pipeline,fout)
     printout("Output folder: "+sbj_path,fout)
